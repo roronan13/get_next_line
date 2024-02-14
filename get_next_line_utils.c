@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/14 14:28:55 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:35:07 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t ft_strlen(const char *str)
 	int i;
 
 	i = 0;
-	while (str[i] != "\0")
+	while (str[i])
 		i++;
 	return (i);
 }
