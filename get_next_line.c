@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/14 16:10:18 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:55:15 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,11 @@ char	*get_next_line(int fd)
 	
 	while (stash[i] && stash[i] != '\n')
 	{
-		if (stash[i] != '\n')
-			i++;
-		else
 		{
 			line = malloc(sizeof(char) * (i + 2));
 			ft_strlcat(line, stash, i + 2);
-			break ;
 		}
+		i++;
 	}
 	return (line);
 }
