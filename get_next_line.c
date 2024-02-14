@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/14 18:58:55 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/14 20:06:52 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ char	*get_next_line(int fd)
 		i++;
 	if (stash[i] == '\0')
 	{
-		
+		nbr_read = read(fd, buf, BUFFER_SIZE);
+		ft_strjoin(stash, buf);
 	}
 	else
 	{
