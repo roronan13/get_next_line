@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/14 18:22:35 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/14 18:58:55 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	int			i;
 	ssize_t		nbr_read;
+	int			x;
 	
 	i = 0;
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));

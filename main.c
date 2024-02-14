@@ -4,8 +4,9 @@
 
 int main()
 {
-	int fd = open("fichier.txt", O_RDONLY);
-	char *line = get_next_line(fd);
+	int		fd = open("fichier.txt", O_RDONLY);
+	char	*line = get_next_line(fd);
+
 	while (line != NULL)
 	{
 		printf("%s", line);
