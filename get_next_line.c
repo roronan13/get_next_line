@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/14 14:06:35 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/14 14:19:00 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ char	*get_next_line(int fd)
 			i++;
 		else
 		{
-			line = malloc(sizeof(char) * i);
-			ft_strlcpy(line, stash, i);
+			line = malloc(sizeof(char) * (i + 1));
+			ft_strlcat(line, stash, i + 1);
 		}
 	}
 }
