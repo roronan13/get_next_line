@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/15 22:04:00 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/15 23:01:10 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,6 @@ char	*get_next_line(int fd)
 		return (NULL);
 	buf[nbr_read] = '\0';
 	stash = ft_strdup(buf);
-/* 	printf("%s\n", buf);
-	printf("%s\n", stash); */
 
 	while (line == NULL)
 	{
@@ -52,8 +50,9 @@ char	*get_next_line(int fd)
 			if (buf[i] == '\n')
 			{
 				line = malloc(sizeof(char) * (i + 2));
-				ft_strlcat(stash, buf, i + 2);
+				ft_strlcat(stash, &buf[nbr_read - i], i + 2);
 				line = stash;
+				i = 0;
 				break ;
 			}
 			i++;
@@ -61,19 +60,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-
-/* 	while (stash[i] && stash[i] != '\n')
-		i++;
-	if (stash[i] == '\0')
-	{
-		nbr_read = read(fd, buf, BUFFER_SIZE);
-		stash = ft_strjoin(stash, buf);
-		printf("stash : %s\n", stash);
-	}
-	else
-	{
-		line = malloc(sizeof(char) * (i + 2));
-		ft_strlcat(line, stash, i + 2);
-		return (line);
-	}
- */
