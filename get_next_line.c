@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/15 20:45:08 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/15 21:59:41 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ char	*get_next_line(int fd)
 	i = 0;
 	line = NULL;
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	printf("marche\n");
 	stash = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	nbr_read = read(fd, buf, BUFFER_SIZE);
 	if (nbr_read == 0)
@@ -53,13 +52,17 @@ char	*get_next_line(int fd)
 			if (buf[i] == '\n')
 			{
 				line = malloc(sizeof(char) * (i + 2));
-				
+				ft_strlcat(stash, buf, i + 2);
+				line = stash;
+				break ;
 			}
 			i++;
 		}
 	}
+	return (line);
+}
 
-	while (stash[i] && stash[i] != '\n')
+/* 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (stash[i] == '\0')
 	{
@@ -73,4 +76,4 @@ char	*get_next_line(int fd)
 		ft_strlcat(line, stash, i + 2);
 		return (line);
 	}
-}
+ */
