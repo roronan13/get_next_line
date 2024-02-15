@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/15 16:08:45 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:34:38 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,16 @@ char	*get_next_line(int fd)
 	buf[nbr_read] = '\0';
 	printf("%ld\n", nbr_read);
 	stash = buf;
+	printf("%s\n", buf);
+	printf("%s\n", stash);
 	
 	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (stash[i] == '\0')
 	{
 		nbr_read = read(fd, buf, BUFFER_SIZE);
-		ft_strjoin(stash, buf);
+		stash = ft_strjoin(stash, buf);
+		printf("stash : %s\n", stash);
 	}
 	else
 	{
