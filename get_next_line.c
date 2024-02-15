@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/15 16:34:38 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:12:05 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,7 @@ char	*get_next_line(int fd)
 	if (nbr_read == 0)
 		return (NULL);
 	buf[nbr_read] = '\0';
-	printf("%ld\n", nbr_read);
-	stash = buf;
+	stash = ft_strdup(buf);
 	printf("%s\n", buf);
 	printf("%s\n", stash);
 	

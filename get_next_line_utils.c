@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/14 20:08:10 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:11:01 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,4 +81,36 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcpy(ptr, s1, size_s1 + 1);
 	ft_strlcat(ptr, s2, size_s1 + size_s2 + 1);
 	return (ptr);
+}
+
+char	*ft_strdup(const char *s)
+{
+	char	*ptr;
+	size_t	a;
+
+	a = ft_strlen(s);
+	ptr = malloc(sizeof(char) * a + 1);
+	if (!ptr)
+		return (NULL);
+	ft_memcpy(ptr, s, a + 1);
+	return (ptr);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	size_t	i;
+	char	*ptr_dest;
+	char	*ptr_src;
+
+	i = 0;
+	ptr_dest = (char *)dest;
+	ptr_src = (char *)src;
+	if (!dest && !src)
+		return (NULL);
+	while (i < n)
+	{
+		ptr_dest[i] = ptr_src[i];
+		i++;
+	}
+	return (ptr_dest);
 }
