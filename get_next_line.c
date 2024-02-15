@@ -6,11 +6,12 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/14 20:10:45 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/15 16:08:45 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include <stdio.h>
 
 char	*get_next_line(int fd)
 {
@@ -25,7 +26,10 @@ char	*get_next_line(int fd)
 	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	stash = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 	nbr_read = read(fd, buf, BUFFER_SIZE);
+	if (nbr_read == 0)
+		return (NULL);
 	buf[nbr_read] = '\0';
+	printf("%ld\n", nbr_read);
 	stash = buf;
 	
 	while (stash[i] && stash[i] != '\n')
