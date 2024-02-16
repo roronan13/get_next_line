@@ -6,12 +6,23 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/16 13:48:48 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:41:22 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 #include <stdio.h>
+
+char	*get_next_line(int fd)
+{
+	
+}
+
+
+
+
+////////////////////////////////////////////
+
 
 char	*get_next_line(int fd)
 {
