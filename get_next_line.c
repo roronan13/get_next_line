@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/15 23:01:10 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/16 13:44:01 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,35 @@ char	*get_next_line(int fd)
 		}
 	}
 	return (line);
+}
+
+char	*get_next_line(int fd)
+{
+	char		*buf;
+	static char	*stash;
+	char		*line;
+	size_t		nbr_read;
+	int			i;
+
+	line = NULL;
+	i = 0;
+	while (line == NULL)
+	{
+		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+		nbr_read = read(fd, buf, BUFFER_SIZE);
+		if (nbr_read == 0)
+			return (NULL);
+		buf[nbr_read] = '\0';
+		stash = malloc(sizeof(char) * (nbr_read + 1));
+		stash = ft_strdup(buf);
+		while (stash[i])
+		{
+			if (stash[i] == '\n')
+			{
+				line = ft_memcpy(line, stash, i);
+				
+			}
+			i++;
+		}
+	}
 }
