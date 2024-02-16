@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/16 15:41:22 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/16 17:06:33 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,18 @@
 
 char	*get_next_line(int fd)
 {
+	char		*buf;
+	static char	*stash;
+	char		*line;
+	ssize_t		nbr_read;
 	
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, buf, 0) < 0)
+		return (NULL);
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	nbr_read = read(fd, buf, BUFFER_SIZE);
+	buf[nbr_read] = '\0';
+	stash = malloc(sizeof(char) * (nbr_read + 1));
+	stash = ft_strdup(buf);
 }
 
 
