@@ -89,16 +89,26 @@ void	clean_stash(char *stash)
 {
 	char	*new_stash;
 	int		i;
+	int		j;
 	
 	i = 0;
-	while(stash[i] && stash[i] != '\n')
+	j = 0;
+	while (stash[i] && stash[i] != '\n')
 		i++;
 	if (stash[i] && stash[i] == '\n')
 		i++;
 	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
 	if (!new_stash)
 		return ;
-	
+	while (stash[i])
+	{
+		new_stash[j] = stash[i];
+		i++;
+		j++;
+	}
+	new_stash[j] = '\0';
+	free(stash);
+	stash = new_stash;
 }
 
 
