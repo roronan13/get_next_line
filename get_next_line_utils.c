@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 01:11:18 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 01:22:07 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 
 int	found_n(char *stash)
 {
+	int	i;
+	
+	i = 0;
 	if (!stash)
 		return (0);
+	while (stash)
+	{
+		if (stash[i] == '\n')
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 size_t ft_strlen(const char *str)
