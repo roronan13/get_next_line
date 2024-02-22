@@ -6,13 +6,13 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 05:17:35 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:40:55 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	found_n(char *stash)
+int	found_n(char **stash)
 {
 	int	i;
 	
@@ -21,14 +21,14 @@ int	found_n(char *stash)
 		return (0);
 	while (stash[i])
 	{
-		if (stash[i] == '\n')
+		if (*stash[i] == '\n')
 			return (1);
 		i++;
 	}
 	return (0);
 }
 
-size_t	size_of_line(char *line, char *stash)
+size_t	size_of_line(char *line, char **stash)
 {
 	int		i;
 	size_t	len;
@@ -37,7 +37,7 @@ size_t	size_of_line(char *line, char *stash)
 	len = 0;
 	while (stash[i])
 	{
-		if (stash[i] == '\n')
+		if (*stash[i] == '\n')
 		{
 			len++;
 			break ;
