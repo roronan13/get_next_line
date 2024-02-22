@@ -19,7 +19,6 @@ char	*get_next_line(int fd)
 	char		*line;
 	ssize_t		nbr_read;
 
-
 	stash = NULL;
 	line = NULL;
 	nbr_read = 1;
