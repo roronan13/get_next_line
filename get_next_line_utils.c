@@ -6,11 +6,17 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/15 18:11:01 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 01:11:18 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+
+int	found_n(char *stash)
+{
+	if (!stash)
+		return (0);
+}
 
 size_t ft_strlen(const char *str)
 {

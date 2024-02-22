@@ -1,4 +1,4 @@
-/* ************************************************************************** */
+ /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
@@ -15,20 +15,39 @@
 
 char	*get_next_line(int fd)
 {
-	char		*buf;
 	static char	*stash;
 	char		*line;
 	ssize_t		nbr_read;
-	
-	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, buf, 0) < 0)
+
+	stash = NULL;
+	nbr_read = 1;
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, line, 0) < 0)
 		return (NULL);
-	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	nbr_read = read(fd, buf, BUFFER_SIZE);
-	buf[nbr_read] = '\0';
+	read_and_stash(fd, stash, nbr_read);
+	if (stash == NULL)
+		return (NULL);
 	stash = malloc(sizeof(char) * (nbr_read + 1));
 	stash = ft_strdup(buf);
 }
 
+void	read_and_stash(int fd, char *stash, ssize_t nbr_read)
+{
+	char	*buf;
+
+	buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
+	if (!buf)
+		return ;
+	while (!found_n(stash) && nbr_read != 0)
+	{
+		nbr_read = read(fd, buf, BUFFER_SIZE);
+		if ((stash == NULL && nbr_read == 0) || nbr_read == -1)
+		{
+			free(buf);
+			return ;
+		}
+		buf[nbr_read] = '\0';
+	}
+}
 
 
 
