@@ -27,7 +27,7 @@ char	*get_next_line(int fd)
 	stash = read_and_fill_stash(fd, stash, nbr_read);
 	if (stash == NULL)
 		return (NULL);
-	printf("stash 2 : %s\n", stash);
+	//printf("stash 2 : %s\n", stash);
 	line = fill_line(stash, line);
 	//stash = clean_stash(stash);
 	if (!line)
@@ -46,7 +46,7 @@ char	*read_and_fill_stash(int fd, char *stash, ssize_t nbr_read)
 	//while (!found_n(stash) && nbr_read != 0)
 	while (found_n(stash) == 0 && nbr_read != 0)
 	{
-		printf("stash debut : %s\n", stash);
+		//printf("stash debut : %s\n", stash);
 		buf = malloc(sizeof(char) * (BUFFER_SIZE + 1));
 		if (!buf)
 			return (NULL);
@@ -58,10 +58,10 @@ char	*read_and_fill_stash(int fd, char *stash, ssize_t nbr_read)
 			free(buf);
 			return (NULL);
 		}
-		printf("stash 1000 : %s\n", stash);
+		//printf("stash 1000 : %s\n", stash);
 		stash = add_buf_to_stash(stash, buf, nbr_read);
-		printf("stash 1 : %s\n", stash);
-		//free(buf);
+		//printf("stash 1 : %s\n", stash);
+		free(buf);
 		//printf("buf 2 : %s\n", buf);
 	}
 	return (stash);
@@ -75,8 +75,8 @@ char	*add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read)
 
 	i = 0;
 	j = 0;
-	printf("stash --- : %s\n", stash);
-	printf("buf --- : %s\n", buf);
+	//printf("stash --- : %s\n", stash);
+	//printf("buf --- : %s\n", buf);
 	if (!stash)
 		return (buf);
 	else
@@ -95,7 +95,7 @@ char	*add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read)
 		j++;
 	}
 	new_stash[i] = '\0';
-	printf("new_stash : %s\n", new_stash);
+	//printf("new_stash : %s\n", new_stash);
 	return (new_stash);
 }
 
