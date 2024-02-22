@@ -23,14 +23,13 @@ char	*get_next_line(int fd)
 	nbr_read = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, line, 0) < 0)
 		return (NULL);
-	read_and_stash(fd, stash, nbr_read);
+	read_and_fill_stash(fd, stash, nbr_read);
 	if (stash == NULL)
 		return (NULL);
-	stash = malloc(sizeof(char) * (nbr_read + 1));
 	stash = ft_strdup(buf);
 }
 
-void	read_and_stash(int fd, char *stash, ssize_t nbr_read)
+void	read_and_fill_stash(int fd, char *stash, ssize_t nbr_read)
 {
 	char	*buf;
 
@@ -46,9 +45,17 @@ void	read_and_stash(int fd, char *stash, ssize_t nbr_read)
 			return ;
 		}
 		buf[nbr_read] = '\0';
+		add_buf_to_stash(stash, buf, nbr_read);
 	}
 }
 
+void	add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read)
+{
+	stash = malloc(sizeof(char) * (nbr_read + 1));
+	if (!stash)
+		return ;
+	
+}
 
 
 ////////////////////////////////////////////
