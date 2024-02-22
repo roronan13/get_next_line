@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 17:05:02 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 18:00:18 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,12 @@ char	*get_next_line(int fd)
 	stash = read_and_fill_stash(fd, stash, nbr_read);
 	if (stash == NULL)
 		return (NULL);
+	printf("stash 2 : %s\n", stash);
 	line = fill_line(stash, line);
-	stash = clean_stash(stash);
+	//stash = clean_stash(stash);
 	if (!line)
 	{
-		free(stash);
+		//free(stash);
 		free(line);
 		return (NULL);
 	}
@@ -50,14 +51,14 @@ char	*read_and_fill_stash(int fd, char *stash, ssize_t nbr_read)
 			return (NULL);
 		nbr_read = read(fd, buf, BUFFER_SIZE);
 		buf[nbr_read] = '\0';
-		printf("buf : %s\n", buf);
+		//printf("buf : %s\n", buf);
 		if ((stash == NULL && nbr_read == 0) || nbr_read == -1)
 		{
 			free(buf);
 			return (NULL);
 		}
 		stash = add_buf_to_stash(stash, buf, nbr_read);
-		printf("stash : %s\n", stash);
+		printf("stash 1 : %s\n", stash);
 		free(buf);
 		//printf("buf 2 : %s\n", buf);
 	}
@@ -90,6 +91,7 @@ char	*add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read)
 		j++;
 	}
 	new_stash[i] = '\0';
+	printf("stash 3 : %s\n", new_stash);
 	return (new_stash);
 }
 
@@ -104,7 +106,7 @@ char	*fill_line(char *stash, char *line)
 	if (!stash)
 		return (NULL);
 	len = size_of_line(line, stash);
-	line = malloc(sizeof(char) * (len +1));
+	line = malloc(sizeof(char) * (len + 1));
 	if (!line)
 		return (NULL);
 	while (stash[i])
@@ -112,14 +114,17 @@ char	*fill_line(char *stash, char *line)
 		if (stash[i] == '\n')
 		{
 			line[j] = stash[i];
-			break ;
+			//break ;
+			line[j + 1] = '\0';
+			return (line);
 		}
 		line[j] = stash[i];
 		i++;
 		j++;
 	}
-	line[j + 1] = '\0';
-	return (line);
+	//line[j] = '\0';
+	//return (line);
+	return (NULL);
 }
 
 char	*clean_stash(char *stash)
