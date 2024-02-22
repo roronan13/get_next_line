@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:18:15 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 03:50:28 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 04:28:38 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 # include <stdlib.h>
 
 char	*get_next_line(int fd);
-void	read_and_fill_stash(int fd, char *stash, ssize_t nbr_read);
-void	add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read);
-void	fill_line(char *stash, char *line);
-void	clean_stash(char *stash);
+char	*read_and_fill_stash(int fd, char *stash, ssize_t nbr_read);
+char	*add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read);
+char	*fill_line(char *stash, char *line);
+char	*clean_stash(char *stash);
 int		found_n(char *stash);
-void	size_of_line(char *line, char *stash);
+size_t	size_of_line(char *line, char *stash);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);

@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 04:13:24 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 04:27:59 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ char	*get_next_line(int fd)
 	stash = read_and_fill_stash(fd, stash, nbr_read);
 	if (stash == NULL)
 		return (NULL);
-	fill_line(stash, line);
+	line = fill_line(stash, line);
 	stash = clean_stash(stash);
 	if (!line)
 	{
@@ -68,18 +68,20 @@ char	*add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read)
 	return (stash);
 }
 
-void	fill_line(char *stash, char *line)
+char	*fill_line(char *stash, char *line)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
+	size_t	len;
 
 	i = 0;
 	j = 0;
 	if (!stash)
-		return ;
-	size_of_line(line, stash);
+		return (NULL);
+	len = size_of_line(line, stash);
+	line = malloc(sizeof(char) * (len +1));
 	if (!line)
-		return ;
+		return (NULL);
 	while (stash[i])
 	{
 		if (stash[i] == '\n')
@@ -92,6 +94,7 @@ void	fill_line(char *stash, char *line)
 		j++;
 	}
 	line[j + 1] = '\0';
+	return (line);
 }
 
 char	*clean_stash(char *stash)
