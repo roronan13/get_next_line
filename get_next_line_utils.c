@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 01:22:07 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 03:01:18 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,33 @@ int	found_n(char *stash)
 	i = 0;
 	if (!stash)
 		return (0);
-	while (stash)
+	while (stash[i])
 	{
 		if (stash[i] == '\n')
 			return (1);
 		i++;
 	}
 	return (0);
+}
+
+void	size_of_line(char *line, char *stash)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = 0;
+	while (stash[i])
+	{
+		if (stash[i] == '\n')
+		{
+			len++;
+			break ;
+		}
+		len++;
+		i++;
+	}
+	line = malloc(sizeof(char) * (len +1));
 }
 
 size_t ft_strlen(const char *str)
