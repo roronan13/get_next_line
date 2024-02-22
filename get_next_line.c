@@ -20,6 +20,7 @@ char	*get_next_line(int fd)
 	ssize_t		nbr_read;
 
 	stash = NULL;
+	line = NULL;
 	nbr_read = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, line, 0) < 0)
 		return (NULL);
@@ -28,6 +29,12 @@ char	*get_next_line(int fd)
 		return (NULL);
 	fill_line(stash, line);
 	clean_stash(stash);
+	if (!line)
+	{
+		free(stash);
+		free(line);
+		return (NULL);
+	}
 	return (line);
 }
 
@@ -115,7 +122,7 @@ void	clean_stash(char *stash)
 ////////////////////////////////////////////
 
 
-char	*get_next_line(int fd)
+/* char	*get_next_line(int fd)
 {
 	char		*buf;
 	static char	*stash;
@@ -194,3 +201,4 @@ char	*get_next_line(int fd)
 		
 	}
 }
+ */

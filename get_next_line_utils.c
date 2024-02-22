@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 03:40:12 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 03:48:24 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ void	size_of_line(char *line, char *stash)
 	line = malloc(sizeof(char) * (len +1));
 }
 
-
-
 size_t ft_strlen(const char *str)
 {
 	int i;
@@ -60,7 +58,7 @@ size_t ft_strlen(const char *str)
 	return (i);
 }
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+/* size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	i;
 
@@ -101,7 +99,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		dst[i] = '\0';
 	}
 	return (ft_strlen(src) + initial_dst_size);
-}
+} */
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
@@ -121,7 +119,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (ptr);
 }
 
-char	*ft_strdup(const char *s)
+/* char	*ft_strdup(const char *s)
 {
 	char	*ptr;
 	size_t	a;
@@ -151,4 +149,4 @@ void	*ft_memcpy(void *dest, const void *src, size_t n)
 		i++;
 	}
 	return (ptr_dest);
-}
+} */
