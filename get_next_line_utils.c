@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 04:27:21 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/22 05:17:35 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,17 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	size_s1;
 	size_t	size_s2;
 
-	if (!s1 || !s2)
-		return (NULL);
-	size_s1 = ft_strlen(s1);
-	size_s2 = ft_strlen(s2);
+	//if (!s1 || !s2)
+	//	return (NULL);
+	if (!s1)
+		size_s1 = 0;
+	else
+		size_s1 = ft_strlen(s1);
+	if (!s2)
+		size_s2 = 0;
+	//size_s1 = ft_strlen(s1);
+	else
+		size_s2 = ft_strlen(s2);
 	ptr = malloc(sizeof(char) * (size_s1 + size_s2 + 1));
 	if (!ptr)
 		return (NULL);
