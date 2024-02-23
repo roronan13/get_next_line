@@ -16,5 +16,6 @@ int main()
 	}
 	printf("%s", line);
 	free(line);
+	line = NULL;
 	close(fd);
 }

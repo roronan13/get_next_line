@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/23 14:20:12 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/23 15:23:22 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ char	*fill_stash_w_read(int fd, char **stash, ssize_t nbr_read)
 	{
 		buf = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
 		if (!buf)
-			return (NULL);
+			return (free(*stash), *stash = NULL, NULL);
 		nbr_read = read(fd, buf, BUFFER_SIZE);
 		if ((stash == NULL && nbr_read == 0) || nbr_read == -1)
 		{
@@ -127,7 +127,7 @@ char	*clean_stash(char **stash)
 		i++;
 	new_stash = ft_calloc(ft_strlen(*stash) - i + 1, sizeof(char));
 	if (!new_stash)
-		return (NULL);
+		return (free(*stash), *stash = NULL, NULL);
 	while (*stash && (*stash)[i])
 	{
 		new_stash[j] = (*stash)[i];
