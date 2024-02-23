@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ronanpothier <ronanpothier@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:18:15 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 19:39:04 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/23 01:23:57 by ronanpothie      ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
@@ -26,7 +26,7 @@ char	*add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read);
 char	*fill_line(char *stash, char *line);
 char	*clean_stash(char *stash);
 int		found_n(char *stash);
-size_t	size_of_line(char *line, char *stash);
+size_t	size_of_line(char *stash);
 size_t	ft_strlen(const char *str);
 char	*ft_strjoin(char const *s1, char const *s2);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);

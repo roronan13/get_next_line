@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ronanpothier <ronanpothier@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 19:48:17 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/23 01:45:34 by ronanpothie      ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "get_next_line.h"
 #include <stdio.h>
@@ -19,7 +19,7 @@ char	*get_next_line(int fd)
 	char		*line;
 	ssize_t		nbr_read;
 
-	stash = NULL;
+	//stash = NULL;
 	line = NULL;
 	nbr_read = 1;
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, line, 0) < 0)
@@ -29,7 +29,7 @@ char	*get_next_line(int fd)
 		return (NULL);
 	//printf("stash 2 : %s\n", stash);
 	line = fill_line(stash, line);
-	//stash = clean_stash(stash);
+	stash = clean_stash(stash);
 	if (!line)
 	{
 		//free(stash);
@@ -62,6 +62,8 @@ char	*read_and_fill_stash(int fd, char *stash, ssize_t nbr_read)
 		stash = add_buf_to_stash(stash, buf, nbr_read);
 		//printf("stash 1 : %s\n", stash);
 		free(buf);
+		//buf = NULL;
+		//printf("stash 1 : %s\n", stash);
 		//printf("buf 2 : %s\n", buf);
 	}
 	return (stash);
@@ -77,18 +79,24 @@ char	*add_buf_to_stash(char *stash, char *buf, ssize_t nbr_read)
 	j = 0;
 	//printf("stash --- : %s\n", stash);
 	//printf("buf --- : %s\n", buf);
-	if (!stash)
-		return (buf);
-	else
-		new_stash = malloc(sizeof(char) * (ft_strlen(stash) + nbr_read + 1));
+	// if (!stash)
+	// {
+	// 	new_stash = malloc(sizeof(char) * (nbr_read + 1));
+	// 	*new_stash = *buf;
+	// 	return (new_stash);
+	// }
+	//else
+	new_stash = malloc(sizeof(char) * (ft_strlen(stash) + nbr_read + 1));
 	if (!new_stash)
 		return (NULL);
-	while (stash[i])
+	//printf("okok\n");
+	while (stash && stash[i])
 	{
 		new_stash[i] = stash[i];
 		i++;
 	}
-	while (buf[j] && j < nbr_read)
+	//printf("okok2\n");
+	while (buf && buf[j] && j < nbr_read)
 	{
 		new_stash[i] = buf[j];
 		i++;
@@ -103,14 +111,12 @@ char	*fill_line(char *stash, char *line)
 {
 	int		i;
 	int		j;
-	size_t	len;
 
 	i = 0;
 	j = 0;
 	if (!stash)
 		return (NULL);
-	len = size_of_line(line, stash);
-	line = malloc(sizeof(char) * (len + 1));
+	line = malloc(sizeof(char) * (size_of_line(stash) + 1));
 	if (!line)
 		return (NULL);
 	while (stash[i])
@@ -139,14 +145,14 @@ char	*clean_stash(char *stash)
 	
 	i = 0;
 	j = 0;
-	while (stash[i] && stash[i] != '\n')
+	while (stash && stash[i] && stash[i] != '\n')
 		i++;
 	if (stash[i] && stash[i] == '\n')
 		i++;
 	new_stash = malloc(sizeof(char) * (ft_strlen(stash) - i + 1));
 	if (!new_stash)
 		return (NULL);
-	while (stash[i])
+	while (stash && stash[i])
 	{
 		new_stash[j] = stash[i];
 		i++;
@@ -154,7 +160,7 @@ char	*clean_stash(char *stash)
 	}
 	new_stash[j] = '\0';
 	free(stash);
-	stash = new_stash;
+	//stash = new_stash;
 	return (new_stash);
 }
 

@@ -1,14 +1,14 @@
-/* ************************************************************************** */
+/******************************************************************************/
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ronanpothier <ronanpothier@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/22 19:40:55 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/23 01:29:17 by ronanpothie      ###   ########.fr       */
 /*                                                                            */
-/* ************************************************************************** */
+/******************************************************************************/
 
 #include "get_next_line.h"
 
@@ -28,24 +28,18 @@ int	found_n(char *stash)
 	return (0);
 }
 
-size_t	size_of_line(char *line, char *stash)
+size_t	size_of_line(char *stash)
 {
-	int		i;
-	size_t	len;
+	size_t	i;
 
 	i = 0;
-	len = 0;
 	while (stash[i])
 	{
 		if (stash[i] == '\n')
-		{
-			len++;
 			break ;
-		}
-		len++;
 		i++;
 	}
-	return (len);
+	return (i + 1);
 }
 
 size_t ft_strlen(const char *str)
@@ -53,6 +47,8 @@ size_t ft_strlen(const char *str)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (0);
 	while (str[i])
 		i++;
 	return (i);
