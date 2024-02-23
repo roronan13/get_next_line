@@ -6,10 +6,11 @@ int main()
 {
 	int		fd = open("fichier.txt", O_RDONLY);
 	char	*line = get_next_line(fd);
+	//int a = 13;
 
-	while (line != NULL)
+	while (line)
 	{
-		printf("%s", line);
+		printf("%ld %s", ft_strlen(line), line);
 		free(line);
 		line = get_next_line(fd);
 	}

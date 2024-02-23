@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/23 10:31:27 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/23 13:13:06 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,27 @@ size_t	ft_strlen(char *str)
 
 	i = 0;
 	if (!str)
-	{
-		free(str);
 		return (0);
-	}
 	while (str[i])
 		i++;
-	free(str);
 	return (i);
+}
+
+void	*ft_calloc(size_t nmemb, size_t size)
+{
+	char	*ptr;
+	size_t	max;
+	size_t	i;
+
+	max = (size_t)-1;
+	if (size != 0 && nmemb > (max / size))
+		return (NULL);
+	ptr = malloc(size * nmemb);
+	if (!ptr)
+		return (NULL);
+	max = nmemb * size;
+	i = 0;
+	while (i < max)
+		ptr[i++] = '\0';
+	return (ptr);
 }
