@@ -6,7 +6,7 @@
 /*   By: ronanpothier <ronanpothier@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/23 02:21:07 by ronanpothie      ###   ########.fr       */
+/*   Updated: 2024/02/23 02:50:42 by ronanpothie      ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -53,6 +53,8 @@ char	*fill_stash_w_read(int fd, char *stash, ssize_t nbr_read)
 		nbr_read = read(fd, buf, BUFFER_SIZE);
 		buf[nbr_read] = '\0';
 		//printf("buf : %s\n", buf);
+		printf("%zd\n", nbr_read);
+		printf("my stash : %s\n", stash);
 		if ((stash == NULL && nbr_read == 0) || nbr_read == -1)
 		{
 			free(buf);
