@@ -6,7 +6,7 @@
 /*   By: ronanpothier <ronanpothier@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/23 03:24:14 by ronanpothie      ###   ########.fr       */
+/*   Updated: 2024/02/23 03:54:19 by ronanpothie      ###   ########.fr       */
 /*                                                                            */
 /******************************************************************************/
 
@@ -25,7 +25,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, line, 0) < 0)
 		return (NULL);
 	stash = fill_stash_w_read(fd, stash, nbr_read);
-	printf("my big stash : %s\n", stash);
+	//printf("my big stash : %s\n", stash);
 	if (stash == NULL)
 		return (NULL);
 	//printf("stash 2 : %s\n", stash);
@@ -54,8 +54,8 @@ char	*fill_stash_w_read(int fd, char *stash, ssize_t nbr_read)
 		nbr_read = read(fd, buf, BUFFER_SIZE);
 		buf[nbr_read] = '\0';
 		//printf("buf : %s\n", buf);
-		printf("nbr_read : %zd\n", nbr_read);
-		printf("my stash : %s\n", stash);
+		//printf("nbr_read : %zd\n", nbr_read);
+		//printf("my stash : %s\n", stash);
 		if ((stash == NULL && nbr_read == 0) || nbr_read == -1)
 		{
 			//printf("allo\n");
@@ -136,6 +136,8 @@ char	*fill_line(char *stash, char *line)
 		i++;
 		j++;
 	}
+	if (ft_strlen(line) != 0)
+		return (line);
 	//line[j] = '\0';
 	//return (line);
 	return (NULL);
