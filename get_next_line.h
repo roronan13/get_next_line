@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:18:15 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/23 09:32:30 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:31:36 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ char	*fill_line(char *stash, char *line);
 char	*clean_stash(char *stash);
 int		found_n(char *stash);
 size_t	size_of_line(char *stash);
-size_t	ft_strlen(const char *str);
+size_t	ft_strlen(char *str);
 
 #endif

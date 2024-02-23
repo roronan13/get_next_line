@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:22:13 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/23 09:34:54 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/23 10:31:27 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,18 @@ size_t	size_of_line(char *stash)
 	return (i + 1);
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen(char *str)
 {
 	int	i;
 
 	i = 0;
 	if (!str)
+	{
+		free(str);
 		return (0);
+	}
 	while (str[i])
 		i++;
+	free(str);
 	return (i);
 }
