@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/28 13:40:42 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:54:59 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*get_next_line(int fd)
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	stash = fill_stash_w_read(fd, &stash, nbr_read);
-	if (stash == NULL)
+	if (!stash)
 		return (NULL);
 	line = fill_line(&stash, line);
 	if (!line)
@@ -44,7 +44,7 @@ char	*fill_stash_w_read(int fd, char **stash, ssize_t nbr_read)
 		if (!buf)
 			return (free(*stash), *stash = NULL, NULL);
 		nbr_read = read(fd, buf, BUFFER_SIZE);
-		if ((stash == NULL && nbr_read == 0) || nbr_read == -1)
+		if ((!stash && nbr_read == 0) || nbr_read == -1)
 		{
 			if (nbr_read == -1)
 			{
