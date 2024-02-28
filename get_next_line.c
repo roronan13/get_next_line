@@ -6,7 +6,7 @@
 /*   By: rpothier <rpothier@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/24 18:17:16 by rpothier          #+#    #+#             */
-/*   Updated: 2024/02/23 15:23:22 by rpothier         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:40:42 by rpothier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*fill_stash_w_read(int fd, char **stash, ssize_t nbr_read)
 		}
 		*stash = add_buf_to_stash(stash, buf, nbr_read);
 		free(buf);
+		buf = NULL;
 	}
 	return (*stash);
 }
@@ -135,5 +136,6 @@ char	*clean_stash(char **stash)
 		j++;
 	}
 	free(*stash);
+	*stash = NULL;
 	return (new_stash);
 }
